@@ -24,7 +24,7 @@ public class paneldejuego extends JPanel implements Runnable {
     public paneldejuego() {
 
         this.setPreferredSize(new Dimension(screenAltura ,screeenAncho));
-        this.setBackground(Color.BLACK);
+        this.setBackground(color.BLACK);
         this.setDoubleBuffered(true);
     }
 
@@ -54,7 +54,7 @@ public class paneldejuego extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D)g;
 
-        g2.setColor(Color.white);
+        g2.setColor(color.white);
 
     }
 
