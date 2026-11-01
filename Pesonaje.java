@@ -14,4 +14,18 @@ abstract class Personaje{
         this.defensa = defensa;
         this.mana = mana;
     }
+
+    public void atacar(Personaje enemigo){
+        enemigo.recibirDanio(this.ataque);
+        System.out.println(this.nombre + " ataca a " + enemigo.getNombre() + " causando " + this.ataque + " de daño.");
+}
+    public void recibirdanio(int cantidad){
+        this.vida -= cantidad;
+        if(this.vida < 0){
+            this.vida = 0;
+        }
+    }
+    public boolean estaVivo(){
+        return this.vida > 0;
+    }
 }

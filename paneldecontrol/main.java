@@ -18,5 +18,6 @@ public class  main{
 
         paneldejuego.startGameThread();
 
+        System.out.println("hola mundo");
     }
 }
