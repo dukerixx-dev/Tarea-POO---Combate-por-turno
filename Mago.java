@@ -7,5 +7,12 @@ public class Mago extends Personaje{
 
     public void ejecutarAccion(){
         //ataca a sus oponentes usando mana
+
+
+        //si el jugador elige la accion "atacar":
+
+        //si el jugador elige la accion "defender":
+
+        //si el jugador elige la accion "usar objeto"
     }
 }
