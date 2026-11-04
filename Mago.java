@@ -1,18 +1,26 @@
-public class Mago extends Personaje{
+public class Mago extends Personaje {
 
     //constructor
-    public Mago(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, int puntosDefensa, Item item){
-        super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, item);
+    public Mago(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, 
+                    int puntosDefensa, Item[] items){
+        super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, items);
     }
 
     public void ejecutarAccion(){
-        //ataca a sus oponentes usando mana
+        //Ataca a sus oponentes usando mana
 
+        //si jugador escoge atacar:
+            //preguntar al jugagor que combatiente enemigo escoge
 
-        //si el jugador elige la accion "atacar":
+        //si el jugador escoge defender:
 
-        //si el jugador elige la accion "defender":
-
-        //si el jugador elige la accion "usar objeto"
+        //si el jugador escoge usar objeto
+            //preguntar al jugador que objeto quiere escoger (nombre descripcion del objeto)
+            //if itemElegido == 1:
+                //iAtaque.usar(1)
+            //if itemElegido == 2:
+                //iDefensa.usar(2)
+            //if itemElegido():
+                //iCuracion.usar(3)
     }
 }

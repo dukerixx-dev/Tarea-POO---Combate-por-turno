@@ -5,23 +5,23 @@ abstract class Personaje{
     private int puntosMana;
     private int puntosAtaque;
     private int puntosDefensa;
-    private Item item;
-
+    private Item[] items;
 
     // Constructor
-    public Personaje(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, int puntosDefensa, Item item){
+    public Personaje(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, int puntosDefensa, Item[] items){
         this.nombre = nombre;
         this.puntosVida = puntosVida;
         this.puntosMana = puntosMana;
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
-        this.item = item;
+        this.items = items;
     }
 
     public abstract void ejecutarAccion();
 
-
     /* 
+    Residuo de maikel
+    
     public void atacar(Personaje enemigo){
         enemigo.recibirDanio(this.ataque);
         System.out.println(this.nombre + " ataca al enemigo causando " + this.ataque + " de daño.");
@@ -54,8 +54,8 @@ abstract class Personaje{
     public int getPuntosDefensa() {
         return puntosDefensa;
     }
-    public Item getItem() {
-        return item;
+    public Item[] getItem() {
+        return items;
     }
     //Setters
     public void setNombre(String nombre) {
@@ -73,8 +73,8 @@ abstract class Personaje{
     public void setPuntosDefensa(int puntosDefensa) {
         this.puntosDefensa = puntosDefensa;
     }
-    public void setItem(Item item) {
-        this.item = item;
+    public void setItem(Item[] items) {
+        this.items = items;
     }
 
 }

@@ -1,43 +1,91 @@
 public class Combate {
-    //private nose algo del singleton
+    private static Combate instancia;
     private Equipo equipo1;
     private Equipo equipo2;
-    private int numRonda;
+    private int numTurno;
     private Equipo equipoGanador;
 
-    //contructor
-    public Combate(Equipo equipo1, Equipo equipo2, int numRonda, Equipo equipoGanador) {
+    //contructor privado, nadie puede instanciar directamente desde fuera
+    private Combate(Equipo equipo1, Equipo equipo2, int numTurno, Equipo equipoGanador) {
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
-        this.numRonda = numRonda;
+        this.numTurno = numTurno;
         this.equipoGanador = equipoGanador;
     }
     
-    
+    public static synchronized Combate getInstancia(Equipo equipo1, Equipo equipo2, 
+                                int numTurno, Equipo equipoGanador){
+        if (instancia == null){
+            instancia = new Combate(equipo1, equipo2, numTurno, equipoGanador);
+            System.err.println("se creó la instancia Combate");
+        }
+        System.err.println("Devolvio la instancia Combate");
+        return instancia;
+    }
 
-    //public static obtenerInstancia(){} -> Singleton
-
-    private void iniciarCombate(){
+    public void iniciarCombate(){ 
         //reune a los equipos y sus combatientes
-        //fin (lo demas lo hace los metodos de los combatientes)
-
+        System.out.println("Empezó el combate");
+        //equipo1.verEstado()
+        //equipo2.verEstado()
+        //while Combate.finCombate() == false:
+            //determinar a q equipo le toca segun el numTurno
+            //preguntar al jugador x (segun q equipo le toca) que combatiente escoge (perElegido)
+            //preguntar al jugador x que accion toma el combatiente (atacar, defender, usar objeto)
+            //if perElegido == guerrero:
+                //guerrero.ejecutarAccion()
+            //if perElegido == mago:
+                //mago.ejecutarAccion()
+            //if perElegido == sanador:
+                //sanador.ejecutarAccion()
+            //this.numTurno++;
+            
+            //Combate.finCombate();
     }
-    private void verificarEstadoEquipo(){
-        //revisa los puntos de vida de los combatientes que hay en un equipo
-        //si hay uno o dos que estan 0 de vida, no participan en el combate.
+    public boolean finCombate(){ 
+        //    Pseudocódigo
+        //equipo1.verEstado()
+        //equipo2.verEstado()
+        // -eliminar Personaje sin vida-
+        //Revisar si el personaje tiene 0 hp o negativo
+        //if == si:
+            //eliminar personaje
+        // -Declarar Ganador-
+        //Revisar si uno de los equipos tiene todos sus personajes eliminados
+        //if equipo1 == todos personajes Muertos
+            //equipo1.setEsPerdedor(true)
+            //return true
+        //else if equipo2 == todos personajes Muertos: 
+            //equipo2.setEsPerdedor(true)
+            //return true
+        //else:
+            return false; 
     }
-    private void examinarYCambiarEstadoCombatiente(){
-        //revisa los atributos del combatiente elegido por el jugador y del oponente elegido.
-        //en base a eso, cambia los valores del combatiente oponente.
-        //si el cambio llega a hacer los puntos de vida 0 o negativos, envia al combatiente al metodo eliminarCombatienteEliminado()
+    //  GETTERS Y SETTERS
+    //getters
+    public Equipo getEquipo1() {
+        return equipo1;
     }
-    private void eliminarCombatienteEliminado(){
-        //hace el proceso de eliminar el combatiente segun su hp al llegar a 0
+    public Equipo getEquipo2() {
+        return equipo2;
     }
-    private String definirEquipoGanador(){
-        //revisa los puntos de vida de los combatientes que hay en un equipo
-        //si evalua que todos los combatientes en un equipo tienen 0 de vida , significa que ese perdió
-        //por lo que el otro equipo ganó
-        
+    public int getNumTurno() {
+        return numTurno;
+    }
+    public Equipo getEquipoGanador() {
+        return equipoGanador;
+    }
+    //setters
+    public void setEquipo1(Equipo equipo1) {
+        this.equipo1 = equipo1;
+    }
+    public void setEquipo2(Equipo equipo2) {
+        this.equipo2 = equipo2;
+    }
+    public void setNumTurno(int numTurno) {
+        this.numTurno = numTurno;
+    }
+    public void setEquipoGanador(Equipo equipoGanador) {
+        this.equipoGanador = equipoGanador;
     }
 }
