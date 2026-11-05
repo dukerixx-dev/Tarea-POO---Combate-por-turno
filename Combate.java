@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Combate {
     private static Combate instancia;
     private Equipo equipo1;
@@ -23,39 +24,72 @@ public class Combate {
         return instancia;
     }
 
-    public void iniciarCombate(){ 
-        //reune a los equipos y sus combatientes
-        System.out.println("Empezó el combate");
-        //equipo1.verEstado()
-        //equipo2.verEstado()
-        //while Combate.finCombate() == false:
-            //determinar a q equipo le toca segun el numTurno
-            //preguntar al jugador x (segun q equipo le toca) que combatiente escoge (perElegido)
-            //preguntar al jugador x que accion toma el combatiente (atacar, defender, usar objeto)
-            //if perElegido == guerrero:
-                //guerrero.ejecutarAccion()
-            //if perElegido == mago:
-                //mago.ejecutarAccion()
-            //if perElegido == sanador:
-                //sanador.ejecutarAccion()
-            //this.numTurno++;
-            
-            //Combate.finCombate();
+    /**
+     * Reune a los equipos y a sus combatientes, y los hace combatir.
+     * 
+     * @author Jorge almonacid
+     * @version 1.0
+     * @param lectorScanner: Recibe las entradas del jugador
+     * @return Void
+     */
+    public void iniciarCombate(Scanner lectorScanner){ 
+        Equipo jugador = equipo1;   //Se creó para empezar el ciclo while y para recibir uno de los equipos de los jugadores.
+        System.out.println("----Empezó el combate----");
+        System.out.println("Turno: " + this.numTurno);
+        while (!finCombate(jugador)){  
+            int personajeElegido = 0;   //Se creo empezar el ciclo while y recibir el personaje elegido.
+            // -Mostrar y revisar estado equipos-
+            equipo1.verEstadoEquipo();
+            equipo2.verEstadoEquipo();
+            // -Determinar que equipo y jugador le toca segun numTurno- 
+            if (numTurno % 2 == 1 ){
+                jugador = equipo1;
+            } else{
+                jugador = equipo2;
+            }
+            // -Escoger personaje-
+            while (personajeElegido < 1 | personajeElegido > 3){
+                System.out.println(jugador.getNombre()+ " | ¿Qué personaje escoge?");
+                System.out.println(jugador.getCombatienteGuerrero().getNombre() +" (1), "+ 
+                                    jugador.getCombatienteMago().getNombre() + " (2), "+ 
+                                    jugador.getCombatienteSanador().getNombre() +" (3)?");
+                personajeElegido = lectorScanner.nextInt();        
+                if (personajeElegido == 1){
+                    jugador.getCombatienteGuerrero().ejecutarAccion();
+                }
+                else if (personajeElegido == 2){
+                    jugador.getCombatienteMago().ejecutarAccion();
+                }
+                else if (personajeElegido == 3){
+                    jugador.getCombatienteSanador().ejecutarAccion();
+                } 
+                else{
+                    System.out.println("Vuelva a elegir su personaje porfavor equipo " + jugador.getNombre());
+                }
+            }
+
+            this.numTurno++;
+            finCombate(jugador);
+        }
+        
     }
-    public boolean finCombate(){ 
-        //    Pseudocódigo
-        //equipo1.verEstado()
-        //equipo2.verEstado()
-        //Revisar si uno de los equipos tiene todos sus personajes eliminados
-        // -Declarar Ganador-
-        //if equipo1 == todos personajes Muertos
-            //equipo1.setEsPerdedor(true)
-            //return true
-        //else if equipo2 == todos personajes Muertos: 
-            //equipo2.setEsPerdedor(true)
-            //return true
-        //else:
-            return false; 
+    /**
+     * Determina el fin del combate si el jugador tiene todos sus personajes eliminados.
+     * 
+     * @author Jorge almonacid
+     * @version 1.0
+     * @param jugador: El jugador y su equipo concurrente.
+     * @return si el combate a terminado o no.
+     */
+    public boolean finCombate(Equipo jugador){ 
+        //-Declarar Ganador-
+        if (jugador.getEsPerdedor()){
+            // -Mostrar al jugador que equipo ganó-
+            System.out.println("El equipo " + jugador.getNombre() + "tiene a todos su personajes eliminados.");
+            return true;
+        } else{
+            return false;
+        }
     }
     //  GETTERS Y SETTERS
     //getters
@@ -77,11 +111,5 @@ public class Combate {
     }
     public void setEquipo2(Equipo equipo2) {
         this.equipo2 = equipo2;
-    }
-    public void setNumTurno(int numTurno) {
-        this.numTurno = numTurno;
-    }
-    public void setEquipoGanador(Equipo equipoGanador) {
-        this.equipoGanador = equipoGanador;
     }
 }

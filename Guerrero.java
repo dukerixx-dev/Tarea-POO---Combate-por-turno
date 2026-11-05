@@ -7,13 +7,14 @@ public class Guerrero extends Personaje {
 
     public void ejecutarAccion(){
         //Ataca a sus oponentes directamente, sin usar mana.
+        System.out.println("¿Qué accion desea ejecutar?");
 
         //si jugador escoge atacar:
             //preguntar al jugador que combatiente enemigo escoge
             //cambiar los stats del combatiente enemigo escogido segun los stats del guerrero
 
         //si el jugador escoge defender:
-        //¿Al atacar, se resta los puntos de ataque con la defensa del oponente, y lo que sobre de los puntos de ataque, se resta a los puntos de vida.?
+        //se duplica los puntos de defensa.
         
         //si el jugador escoge usar objeto
             //preguntar al jugador que objeto quiere escoger (nombre descripcion del objeto)

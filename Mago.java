@@ -8,7 +8,7 @@ public class Mago extends Personaje {
 
     public void ejecutarAccion(){
         //Ataca a sus oponentes usando mana
-
+        System.out.println("¿Qué accion desea ejecutar?");
         //si jugador escoge atacar:
             //preguntar al jugagor que combatiente enemigo escoge
 

@@ -17,7 +17,9 @@ public class Equipo {
         this.esPerdedor = esPerdedor;
     }
 
-    private void verEstadoEquipo(){
+    public void verEstadoEquipo(){
+        System.out.println("HP equipo 1: " + this.combatienteGuerrero.getPuntosVida());
+
         //Revisa el estado y las estadisticas de los personajes y los muestra al jugador.
         // -eliminar Personaje sin vida-
         //Revisar si el personaje tiene 0 hp o negativo

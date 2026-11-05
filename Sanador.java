@@ -8,12 +8,13 @@ public class Sanador extends Personaje {
 
     public void ejecutarAccion(){
         //aumenta puntos de vida a sus aliados
+        System.out.println("¿Qué accion desea ejecutar?");
         //si jugador escoge atacar:
             //preguntar al jugador que combatiente enemigo escoge
 
         //si el jugador escoge defender:
             //se duplica la defensa del personaje elegido
-            //termina su turno
+        
 
         //si el jugador escoge usar objeto
             //preguntar al jugador que objeto quiere escoger (nombre descripcion del objeto)
