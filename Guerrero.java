@@ -1,7 +1,7 @@
 public class Guerrero extends Personaje {
     //constructor
     public Guerrero(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, 
-                    int puntosDefensa, Item[] items){
+                    int puntosDefensa, Item items){
         super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, items);
         }
 
@@ -9,7 +9,8 @@ public class Guerrero extends Personaje {
         //Ataca a sus oponentes directamente, sin usar mana.
 
         //si jugador escoge atacar:
-            //preguntar al jugagor que combatiente enemigo escoge
+            //preguntar al jugador que combatiente enemigo escoge
+            //cambiar los stats del combatiente enemigo escogido segun los stats del guerrero
 
         //si el jugador escoge defender:
         //¿Al atacar, se resta los puntos de ataque con la defensa del oponente, y lo que sobre de los puntos de ataque, se resta a los puntos de vida.?

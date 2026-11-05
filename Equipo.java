@@ -19,6 +19,10 @@ public class Equipo {
 
     private void verEstadoEquipo(){
         //Revisa el estado y las estadisticas de los personajes y los muestra al jugador.
+        // -eliminar Personaje sin vida-
+        //Revisar si el personaje tiene 0 hp o negativo
+        //if == si:
+            //eliminar personaje
     }
 
     //  GETTERS Y SETTERS

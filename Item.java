@@ -14,9 +14,10 @@ public class Item{
         this.duracionTurnos = duracionTurnos;
         this.contUsos = contUsos;
     }
-    public void usar(int tipo){
+    public void usar(int tipo, int numTurnos){
         //  Pseudocódigo
         //int contUsos = this.contUsos;
+        //int contEfecto = 0 (o 1, nose);
         //verificar si el combatiente ha usado un objeto o no (solo puede usar un objeto una sola vez).
         //if contUsos < 1:
             //if tipo == 1 (ataque):

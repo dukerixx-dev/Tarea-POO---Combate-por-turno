@@ -5,10 +5,10 @@ abstract class Personaje{
     private int puntosMana;
     private int puntosAtaque;
     private int puntosDefensa;
-    private Item[] items;
+    private Item items;
 
     // Constructor
-    public Personaje(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, int puntosDefensa, Item[] items){
+    public Personaje(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, int puntosDefensa, Item items){
         this.nombre = nombre;
         this.puntosVida = puntosVida;
         this.puntosMana = puntosMana;
@@ -54,7 +54,7 @@ abstract class Personaje{
     public int getPuntosDefensa() {
         return puntosDefensa;
     }
-    public Item[] getItem() {
+    public Item getItem() {
         return items;
     }
     //Setters
@@ -73,7 +73,7 @@ abstract class Personaje{
     public void setPuntosDefensa(int puntosDefensa) {
         this.puntosDefensa = puntosDefensa;
     }
-    public void setItem(Item[] items) {
+    public void setItem(Item items) {
         this.items = items;
     }
 

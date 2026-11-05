@@ -11,20 +11,22 @@ public class Main{
                         3, 2,0); //(tipo 2 = defensa)
         Item iCuracion = new Item("pocion de Curación", "Aumenta x de puntos de vida al personaje",
                         1, 3, 0); //(tipo 3 = curacion)
-        Item[] items = {iAtaque, iDefensa, iCuracion};
+        
+        Item[] items1 = {iAtaque, iDefensa, iCuracion};
+        Item[] items2 = {iAtaque, iDefensa, iCuracion};
         //combatientes
         Guerrero guerrero1 = new Guerrero("Enrique el Guerrero", 150, 
-                            0, 80, 40, items); //(1 = perElegido)
+                            0, 80, 40, items1[0]); //(1 = perElegido)
         Mago mago1 = new Mago("Pepe el Mago", 80, 
-                            100, 80, 20, items); //(2 = perElegido)
+                            100, 80, 20, items1[1]); //(2 = perElegido)
         Sanador sanador1 = new Sanador("Sulivan el Sanador", 
-                            120, 67, 0, 35, items); //(3 = perElegido)
+                            120, 67, 0, 35,items1[2]); //(3 = perElegido)
         Guerrero guerrero2 = new Guerrero("Paco el Guerrero", 150, 
-                            0, 80, 40, items); //(1 = perElegido)
+                            0, 80, 40, items2[0]); //(1 = perElegido)
         Mago mago2 = new Mago("Epep el Mago", 80, 
-                            100, 80, 20, items); //(2 = perElegido)
+                            100, 80, 20, items2[1]); //(2 = perElegido)
         Sanador sanador2 = new Sanador("Mike el Sanador", 
-                            120, 67, 0, 35, items); //(3 = perElegido)
+                            120, 67, 0, 35, items2[2]); //(3 = perElegido)
         //equipos
         // el equipo 1 tendra su turno cuando este sea impar, y el equipo 2 cuando sea par.
         System.out.println("Que nombre quiere colocarle a su equipo jugador 1?: ");

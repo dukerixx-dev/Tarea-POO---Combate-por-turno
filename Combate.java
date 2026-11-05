@@ -46,12 +46,8 @@ public class Combate {
         //    Pseudocódigo
         //equipo1.verEstado()
         //equipo2.verEstado()
-        // -eliminar Personaje sin vida-
-        //Revisar si el personaje tiene 0 hp o negativo
-        //if == si:
-            //eliminar personaje
-        // -Declarar Ganador-
         //Revisar si uno de los equipos tiene todos sus personajes eliminados
+        // -Declarar Ganador-
         //if equipo1 == todos personajes Muertos
             //equipo1.setEsPerdedor(true)
             //return true
