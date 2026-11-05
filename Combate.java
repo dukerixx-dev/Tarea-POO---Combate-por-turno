@@ -35,11 +35,11 @@ public class Combate {
     public void iniciarCombate(Scanner lectorScanner){ 
         Equipo jugador = equipo1;   //Se creó para empezar el ciclo while y para recibir uno de los equipos de los jugadores.
         Equipo equipoOponente;
-        System.out.println("----Empezó el combate----");
-        System.out.println("Turno: " + this.numTurno);
+        System.out.println("\n----Empezó el combate----");
         while (!finCombate(jugador)){  
             int personajeElegido = 0;   //Se creo empezar el ciclo while y recibir el personaje elegido.
             // -Mostrar y revisar estado equipos-
+            System.out.println("Turno: " + this.numTurno);
             equipo1.verEstadoEquipo();
             equipo2.verEstadoEquipo();
             // -Determinar que equipo y jugador le toca segun numTurno- 
@@ -58,13 +58,13 @@ public class Combate {
                                     jugador.getCombatienteSanador().getNombre() +" (3)?");
                 personajeElegido = lectorScanner.nextInt();        
                 if (personajeElegido == 1){
-                    jugador.getCombatienteGuerrero().ejecutarAccion(jugador, equipoOponente, numTurno);
+                    jugador.getCombatienteGuerrero().ejecutarAccion(jugador, equipoOponente,numTurno, lectorScanner);
                 }
                 else if (personajeElegido == 2){
-                    jugador.getCombatienteMago().ejecutarAccion(jugador, equipoOponente, numTurno);
+                    jugador.getCombatienteMago().ejecutarAccion(jugador, equipoOponente, numTurno, lectorScanner);
                 }
                 else if (personajeElegido == 3){
-                    jugador.getCombatienteSanador().ejecutarAccion(jugador, equipoOponente, numTurno);
+                    jugador.getCombatienteSanador().ejecutarAccion(jugador, equipoOponente, numTurno, lectorScanner);
                 } 
                 else{
                     System.out.println("Vuelva a elegir su personaje porfavor equipo " + jugador.getNombre());
@@ -114,5 +114,16 @@ public class Combate {
     }
     public void setEquipo2(Equipo equipo2) {
         this.equipo2 = equipo2;
+    }
+
+    public static void setInstancia(Combate instancia) {
+        Combate.instancia = instancia;
+    }
+
+    public void setNumTurno(int numTurno) {
+        this.numTurno = numTurno;
+    }
+    public void setEquipoGanador(Equipo equipoGanador) {
+        this.equipoGanador = equipoGanador;
     }
 }

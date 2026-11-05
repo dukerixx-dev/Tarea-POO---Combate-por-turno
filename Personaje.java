@@ -1,3 +1,4 @@
+import java.util.Scanner;
 abstract class Personaje{
     //Atributos
     private String nombre;
@@ -17,7 +18,7 @@ abstract class Personaje{
         this.items = items;
     }
 
-    public abstract void ejecutarAccion(Equipo jugador, Equipo equipoOponente, int numTurno);
+    public abstract void ejecutarAccion(Equipo jugador, Equipo equipoOponente,int numTurno, Scanner lectorScanner);
 
     /* 
     Residuo de maikel
@@ -67,14 +68,22 @@ abstract class Personaje{
     public void setPuntosMana(int puntosMana) {
         this.puntosMana = puntosMana;
     }
-    public void setPuntosAtaque(int puntosAtaque) {
-        this.puntosAtaque = puntosAtaque;
+    /* 
+    public void setTemporalPuntosAtaque(int cantidad, int duracionTurnos){
+        if (){
+            this.puntosAtaque =;
+        }
+        
     }
-    public void setPuntosDefensa(int puntosDefensa) {
-        this.puntosDefensa = puntosDefensa;
+    public void setTemporalPuntosDefensa(int duracionTurnos){
+        int defensaOriginal ;
+        if (duracionTurnos > 0){
+            defensaOriginal = this.puntosDefensa;
+            this.puntosDefensa = 2 * defensaOriginal;
+            duracionTurnos--;
+        } else{
+            this.puntosDefensa = defensaOriginal;
+        }
     }
-    public void setItem(Item items) {
-        this.items = items;
-    }
-
+        */
 }

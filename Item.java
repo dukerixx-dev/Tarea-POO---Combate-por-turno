@@ -14,7 +14,8 @@ public class Item{
         this.duracionTurnos = duracionTurnos;
         this.contUsos = contUsos;
     }
-    public void usar(int tipo, int numTurnos){
+    public void usar(int numTurnos){
+        //Para el "tipo" de item, usa directamente "this.tipo" para mostrar o cambiar.
         //  Pseudocódigo
         //int contUsos = this.contUsos;
         //int contEfecto = 0 (o 1, nose)

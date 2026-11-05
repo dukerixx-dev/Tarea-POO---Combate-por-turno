@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Sanador extends Personaje {
 
     //constructor
@@ -6,7 +8,7 @@ public class Sanador extends Personaje {
         super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, items);
     }
 
-    public void ejecutarAccion(Equipo jugador, Equipo equipoOponente, int numTurno){
+    public void ejecutarAccion(Equipo jugador, Equipo equipoOponente, int numTurno, Scanner lectorScanner){
         //aumenta puntos de vida a sus aliados
         System.out.println("¿Qué accion desea ejecutar?");
 

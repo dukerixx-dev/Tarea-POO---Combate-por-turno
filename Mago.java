@@ -1,12 +1,12 @@
+import java.util.Scanner;
 public class Mago extends Personaje {
-
     //constructor
     public Mago(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, 
                     int puntosDefensa, Item items){
         super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, items);
     }
 
-    public void ejecutarAccion(Equipo jugador, Equipo equipoOponente, int numTurno){
+    public void ejecutarAccion(Equipo jugador, Equipo equipoOponente,int numTurno, Scanner lectorScanner){
         //Ataca a sus oponentes usando mana
         System.out.println("¿Qué accion desea ejecutar?");
         System.out.println(jugador.getNombre() + "hizo una accion");
