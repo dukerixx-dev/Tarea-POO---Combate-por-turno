@@ -5,10 +5,10 @@ public class Guerrero extends Personaje {
         super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, items);
         }
 
-    public void ejecutarAccion(){
+    public void ejecutarAccion(Equipo jugador, Equipo equipoOponente, int numTurno){
         //Ataca a sus oponentes directamente, sin usar mana.
         System.out.println("¿Qué accion desea ejecutar?");
-
+        System.out.println(jugador.getNombre() + "hizo una accion");
         //si jugador escoge atacar:
             //preguntar al jugador que combatiente enemigo escoge
             //cambiar los stats del combatiente enemigo escogido segun los stats del guerrero

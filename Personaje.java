@@ -17,7 +17,7 @@ abstract class Personaje{
         this.items = items;
     }
 
-    public abstract void ejecutarAccion();
+    public abstract void ejecutarAccion(Equipo jugador, Equipo equipoOponente, int numTurno);
 
     /* 
     Residuo de maikel

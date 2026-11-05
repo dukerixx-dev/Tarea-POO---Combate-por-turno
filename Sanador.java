@@ -6,9 +6,11 @@ public class Sanador extends Personaje {
         super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, items);
     }
 
-    public void ejecutarAccion(){
+    public void ejecutarAccion(Equipo jugador, Equipo equipoOponente, int numTurno){
         //aumenta puntos de vida a sus aliados
         System.out.println("¿Qué accion desea ejecutar?");
+
+        System.out.println(jugador.getNombre() + "hizo una accion");
         //si jugador escoge atacar:
             //preguntar al jugador que combatiente enemigo escoge
 
