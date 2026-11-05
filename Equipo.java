@@ -18,13 +18,21 @@ public class Equipo {
     }
 
     public void verEstadoEquipo(){
-        System.out.println("HP equipo 1: " + this.combatienteGuerrero.getPuntosVida());
-
-        //Revisa el estado y las estadisticas de los personajes y los muestra al jugador.
-        // -eliminar Personaje sin vida-
-        //Revisar si el personaje tiene 0 hp o negativo
-        //if == si:
-            //eliminar personaje
+        //Muestra el estado de los 3 combatientes del equipo
+        System.out.println(" Equipo " + this.nombre );
+        Personaje[] combatientes = {this.combatienteGuerrero, this.combatienteMago, this.combatienteSanador};
+        for (Personaje p : combatientes){
+            // Un personaje con 0 de vida se marca como K.O.
+            String estado = (p.getPuntosVida() <= 0) ? " (K.O.)" : "";
+            //si el objeto es valido se muestra su nombre, si no se muestra "sin objeto"
+            String objeto = (p.getItem() != null) ? p.getItem().getNombre() : "sin objeto";
+            System.out.println(p.getNombre() + estado
+                    + " | Vida: " + p.getPuntosVida()
+                    + " | Maná: " + p.getPuntosMana()
+                    + " | Ataque: " + p.getPuntosAtaque()
+                    + " | Defensa: " + p.getPuntosDefensa()
+                    + " | Objeto: " + objeto);
+        }
     }
 
     //  GETTERS Y SETTERS
