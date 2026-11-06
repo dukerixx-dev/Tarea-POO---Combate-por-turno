@@ -65,25 +65,10 @@ abstract class Personaje{
     public void setPuntosVida(int puntosVida) {
         this.puntosVida = puntosVida;
     }
-    public void setPuntosMana(int puntosMana) {
-        this.puntosMana = puntosMana;
+    public void añadirPuntosVida(int curacion) {
+        this.puntosVida += curacion;
     }
-    /* 
-    public void setTemporalPuntosAtaque(int cantidad, int duracionTurnos){
-        if (){
-            this.puntosAtaque =;
-        }
-        
+    public void restarPuntosMana(int puntosRestados) {
+        this.puntosMana -= puntosRestados;
     }
-    public void setTemporalPuntosDefensa(int duracionTurnos){
-        int defensaOriginal ;
-        if (duracionTurnos > 0){
-            defensaOriginal = this.puntosDefensa;
-            this.puntosDefensa = 2 * defensaOriginal;
-            duracionTurnos--;
-        } else{
-            this.puntosDefensa = defensaOriginal;
-        }
-    }
-        */
 }

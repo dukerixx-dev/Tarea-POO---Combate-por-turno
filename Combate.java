@@ -18,9 +18,7 @@ public class Combate {
                                 int numTurno, Equipo equipoGanador){
         if (instancia == null){
             instancia = new Combate(equipo1, equipo2, numTurno, equipoGanador);
-            System.err.println("se creó la instancia Combate");
         }
-        System.err.println("Devolvio la instancia Combate");
         return instancia;
     }
 

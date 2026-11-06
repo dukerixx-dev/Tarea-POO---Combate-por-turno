@@ -20,13 +20,13 @@ public class Main{
         Mago mago1 = new Mago("Pepe el Mago", 80, 
                             100, 80, 20, items1[1]); //(2 = perElegido)
         Sanador sanador1 = new Sanador("Sulivan el Sanador", 
-                            120, 67, 0, 35,items1[0]); //(3 = perElegido)
+                            120, 67, 20, 35,items1[0]); //(3 = perElegido)
         Guerrero guerrero2 = new Guerrero("Paco el Guerrero", 150, 
                             0, 80, 40, items2[2]); //(1 = perElegido)
         Mago mago2 = new Mago("Epep el Mago", 80, 
                             100, 80, 20, items2[1]); //(2 = perElegido)
         Sanador sanador2 = new Sanador("Mike el Sanador", 
-                            120, 67, 0, 35, items2[0]); //(3 = perElegido)
+                            120, 67, 20, 35, items2[0]); //(3 = perElegido)
         
         //Equipos
         System.out.println("Que nombre quiere colocarle a su equipo jugador 1?: ");
