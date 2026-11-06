@@ -5,6 +5,8 @@ public class Item{
     private int duracionTurnos;
     private int tipo;
     private int contUsos;
+    private int valorEfecto = 67; // lo usamos para aplicar o quitar el efecto 
+    private int turnoFinEfecto = 0; //con turno controlamos los efectos activos
 
     //constructor
     public Item(String nombre, String descripcion, int duracionTurnos, int tipo, int contUsos){
@@ -14,25 +16,46 @@ public class Item{
         this.duracionTurnos = duracionTurnos;
         this.contUsos = contUsos;
     }
-    public void usar(int numTurnos){
-        //Para el "tipo" de item, usa directamente "this.tipo" para mostrar o cambiar.
-        //  Pseudocódigo
-        //int contUsos = this.contUsos;
-        //int contEfecto = 0 (o 1, nose)
-        //verificar si el combatiente ha usado un objeto o no (solo puede usar un objeto una sola vez).
-        //if contUsos < 1:
-            //if tipo == 1 (ataque):
-                //aplicar el efecto
-            //if tipo == 2 (defensa):
-                //aplicar el efecto
-            //if tipo == 3 (curacion):
-                //aplicar el efecto
-            //this.cont++;
-        //else:
-            //decirle al jugador que no puede volver a usar un objeto
+    public void usar(Personaje portador, int numTurno){
 
+    if (this.contUsos < 1){
+        int duracionEfecto = this.duracionTurnos; //en el enunciado se limita el efecto a 3 turnos como max
+        if (duracionEfecto > 3){
+            duracionEfecto = 3;
+        }
+        if (this.tipo == 1){
+            portador.añadirPuntosAtaque(this.valorEfecto);
+            System.out.println(portador.getNombre() + " subio su ataque en " + this.valorEfecto);
+        }
+        if(this.tipo == 2){
+            portador.añadirPuntosDefensa(this.valorEfecto);
+            System.out.println(portador.getNombre() + " subio su defensa en " + this.valorEfecto);
+        }
+        if (this.tipo == 3){
+            portador.setPuntosVida(this.valorEfecto);
+            System.out.println(portador.getNombre() + " recuperas " + this.valorEfecto + "de vida" );
+        }
+        if(this.tipo == 1 || this.tipo == 2 ){
+            this.turnoFinEfecto = numTurno + duracionEfecto * 2;
+        }
+        this.contUsos++;
+    }    
+        else {
+            System.out.println(portador.getNombre() +  "no puedes volver a usar un objeto ");
+        }
     }
-
+    public void verificarEfecto(Personaje portador, int numTurno){
+    if (this.turnoFinEfecto > 0 && numTurno >= this.turnoFinEfecto){
+        if (this.tipo == 1){
+            portador.añadirPuntosAtaque(-this.valorEfecto);
+        }
+        if (this.tipo == 2){
+            portador.añadirPuntosDefensa(-this.valorEfecto);
+        }
+        this.turnoFinEfecto = 0;
+        System.out.println("Se acabó el efecto de " + this.nombre + " en " + portador.getNombre());
+    }
+}
     //  GETTERS Y SETTERS
     //Getters
     public String getNombre() {
