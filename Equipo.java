@@ -17,6 +17,13 @@ public class Equipo {
         this.esPerdedor = esPerdedor;
     }
 
+    /**    
+     * Muestra el estado del equipo concurrente en pantalla.
+     * 
+     * @author maikel Arrieta
+     * @version 1.0
+     * @return void
+     */
     public void verEstadoEquipo(){
         //Muestra el estado de los 3 combatientes del equipo
         System.out.println(" Equipo " + this.nombre );

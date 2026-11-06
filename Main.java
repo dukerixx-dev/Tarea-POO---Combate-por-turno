@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Main{
     /**
-     * @Integrantes: Jorge Almonacid, Maikel Arrieta, Helmuth sawd, Sevastian sawd
+     * @Integrantes: Jorge Almonacid, Maikel Arrieta, Helmuth sawd, Sevastian Ricaurte.
      */
     public static void main(String[] args) {
         Scanner lectorScanner = new Scanner(System.in);

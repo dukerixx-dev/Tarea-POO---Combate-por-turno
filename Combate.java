@@ -26,7 +26,7 @@ public class Combate {
      * Reune a los equipos y a sus combatientes, y los hace combatir.
      * 
      * @author Jorge almonacid
-     * @version 1.0
+     * @version 1.2
      * @param lectorScanner: Recibe las entradas del jugador
      * @return Void
      */

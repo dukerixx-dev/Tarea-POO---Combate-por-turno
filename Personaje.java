@@ -23,24 +23,6 @@ abstract class Personaje{
 
     public abstract void ejecutarAccion(Equipo jugador, Equipo equipoOponente,int numTurno, Scanner lectorScanner);
 
-    /* 
-    Residuo de maikel
-    
-    public void atacar(Personaje enemigo){
-        enemigo.recibirDanio(this.ataque);
-        System.out.println(this.nombre + " ataca al enemigo causando " + this.ataque + " de daño.");
-}
-    public void recibirDanio(int cantidad){
-        this.vida -= cantidad;
-        if(this.vida < 0){
-            this.vida = 0;
-        }
-    }
-    public boolean estaVivo(){
-        return this.vida > 0;
-    }
-        */
-
     //  GETTERS Y SETTERS
     //Getters
     public String getNombre() {
@@ -77,7 +59,6 @@ abstract class Personaje{
     public void setPuntosDefensa(int puntosDefensa){
         this.puntosDefensa = puntosDefensa;
     }
-
     public void setPuntosAtaque(int puntosAtaque) {
         this.puntosAtaque = puntosAtaque;
     }

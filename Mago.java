@@ -6,13 +6,22 @@ public class Mago extends Personaje {
         super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, items, contTurnosDefensa);
     }
 
+    /**    
+     * Permite al jugador atacar, defender y usar objeto con su personaje elegido.
+     * 
+     * @author Jorge Almonacid
+     * @version 1.2
+     * @param jugador Equipo al cual le toca su turno.
+     * @param equipoOponente Equipo al cual va a ser afectado por el jugador.
+     * @param numTurno El turno concurrente del combate.
+     * @param lectorScanner Recibe las entradas del jugador.
+     * @return void
+     */
     public void ejecutarAccion(Equipo jugador, Equipo equipoOponente,int numTurno, Scanner lectorScanner){
         //Ataca a sus oponentes usando mana
         int accionElegida = 0;
         // -Escoger accion-
         while (accionElegida < 1 | accionElegida >3){
-            //revisa si el jugador ha selecionado "defender" en su anterior turno
-
             System.out.println("¿Qué accion desea ejecutar?");
             System.out.println("Atacar (1), Defender (2), Usar Objeto (3).");
             accionElegida = lectorScanner.nextInt();
@@ -74,7 +83,6 @@ public class Mago extends Personaje {
                     jugador.getCombatienteMago().setContTurnosDefensa(2);
                     System.out.println(jugador.getCombatienteMago().getNombre() + " ha duplicado su defensa!");
                     Combate.getInstancia(equipoOponente, equipoOponente, 67, null).setNumTurno(numTurno++);
-                    
                 }
                 else{
                     // -Defensa original: si los 2 turnos de defensa ya pasaron, vuelve a su valor original-
@@ -95,7 +103,5 @@ public class Mago extends Personaje {
                 System.out.println("Vuelva a elegir su acción porfavor");
             }
         }
-
-        //si el jugador escoge defender:
-    }         //se duplica la defensa del personaje elegido
+    }         
 }

@@ -14,6 +14,17 @@ public class Item{
         this.duracionTurnos = duracionTurnos;
         this.contUsos = contUsos;
     }
+    /**    
+     * Permite al jugador atacar, defender y usar objeto con su personaje elegido.
+     * 
+     * @author 
+     * @version 1.0
+     * @param 
+     * @param 
+     * @param 
+     * @param 
+     * @return 
+     */
     public void usar(int numTurnos){
         //Para el "tipo" de item, usa directamente "this.tipo" para mostrar o cambiar.
         //  Pseudocódigo
