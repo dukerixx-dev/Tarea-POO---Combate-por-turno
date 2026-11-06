@@ -5,6 +5,8 @@ public class Item{
     private int duracionTurnos;
     private int tipo;
     private int contUsos;
+    private int valorEfecto = 67; // lo usamos para aplicar o quitar el efecto 
+    private int turnoFinEfecto = 0; //con turno controlamos los efectos activos
 
     //constructor
     public Item(String nombre, String descripcion, int duracionTurnos, int tipo, int contUsos){
@@ -14,17 +16,6 @@ public class Item{
         this.duracionTurnos = duracionTurnos;
         this.contUsos = contUsos;
     }
-    /**    
-     * Permite al jugador atacar, defender y usar objeto con su personaje elegido.
-     * 
-     * @author 
-     * @version 1.0
-     * @param 
-     * @param 
-     * @param 
-     * @param 
-     * @return 
-     */
     public void usar(int numTurnos){
         //Para el "tipo" de item, usa directamente "this.tipo" para mostrar o cambiar.
         //  Pseudocódigo

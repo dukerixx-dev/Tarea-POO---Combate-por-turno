@@ -53,6 +53,12 @@ abstract class Personaje{
     public void setPuntosVida(int puntosVida) {
         this.puntosVida = puntosVida;
     }
+    public void añadirPuntosAtaque(int puntos){
+    this.puntosAtaque += puntos;
+}
+    public void añadirPuntosDefensa(int puntos){
+    this.puntosDefensa += puntos;
+}
     public void setPuntosMana(int puntosMana) {
         this.puntosMana = puntosMana;
     }
