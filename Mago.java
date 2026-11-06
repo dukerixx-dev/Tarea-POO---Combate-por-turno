@@ -2,37 +2,40 @@ import java.util.Scanner;
 public class Mago extends Personaje {
     //constructor
     public Mago(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, 
-                    int puntosDefensa, Item items){
-        super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, items);
+                    int puntosDefensa, Item items, int contTurnosDefensa){
+        super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, items, contTurnosDefensa);
     }
 
     public void ejecutarAccion(Equipo jugador, Equipo equipoOponente,int numTurno, Scanner lectorScanner){
         //Ataca a sus oponentes usando mana
         int accionElegida = 0;
-        int contDefensa = 0;
+        // -Escoger accion-
         while (accionElegida < 1 | accionElegida >3){
             //revisa si el jugador ha selecionado "defender" en su anterior turno
 
             System.out.println("¿Qué accion desea ejecutar?");
             System.out.println("Atacar (1), Defender (2), Usar Objeto (3).");
             accionElegida = lectorScanner.nextInt();
-            // -si jugador escoge atacar-
+            // -Escoge atacar-
             if (accionElegida == 1){
                 int oponenteElegido = 0;
-                //preguntar al jugador que combatiente enemigo escoge para realizar daño
+                // -Escoger oponente-
                 while (oponenteElegido < 1 | oponenteElegido > 3){
                     System.out.println("¿A quién desea atacar del equipo " + equipoOponente.getNombre() +"?");
                     System.out.println(equipoOponente.getCombatienteGuerrero().getNombre() +" (1), "+ 
                                         equipoOponente.getCombatienteMago().getNombre() + " (2), "+ 
                                         equipoOponente.getCombatienteSanador().getNombre() +" (3)?");
                     oponenteElegido = lectorScanner.nextInt();
-                    //cambiar los stats del combatiente enemigo escogido segun los stats del Mago
+                    // -cambia los puntos de vida del oponente, segun la defensa de este y los puntos de ataque del Mago-
                     if (oponenteElegido == 1){
                         //explicacion variable dano: dano = vida del oponente elegido - (puntos de ataque del Mago - defensa del oponente elegido)
                         int dano = equipoOponente.getCombatienteGuerrero().getPuntosVida() - (jugador.getCombatienteMago().getPuntosAtaque() - equipoOponente.getCombatienteGuerrero().getPuntosDefensa()); // se descuenta defensa
+                        //Resta vida del oponente
                         equipoOponente.getCombatienteGuerrero().setPuntosVida(dano); 
-                        //restar maná del mago
-                        jugador.getCombatienteMago().restarPuntosMana(35);
+                        //resta el maná del mago
+                        // explicacion variable manaRestado: manaRestado = mana del mago - x
+                        int manaRestado = jugador.getCombatienteMago().getPuntosMana() - 35;
+                        jugador.getCombatienteMago().setPuntosMana(manaRestado);
                         //muestra al jugador q el mago atacó
                         System.out.println(jugador.getCombatienteMago().getNombre() + " Atacó a " + equipoOponente.getCombatienteGuerrero().getNombre() +"!");
                         System.out.println(jugador.getCombatienteMago().getNombre() + " perdío maná!\n");
@@ -41,22 +44,18 @@ public class Mago extends Personaje {
                     }
                     else if (oponenteElegido == 2){
                         int dano = equipoOponente.getCombatienteMago().getPuntosVida() - (jugador.getCombatienteMago().getPuntosAtaque() - equipoOponente.getCombatienteMago().getPuntosDefensa()); // se descuenta defensa
-                        //Resta vida del oponente
                         equipoOponente.getCombatienteMago().setPuntosVida(dano); //le resta la vida teniendo en cuenta la defensa
-                        //restar maná del mago
-                        jugador.getCombatienteMago().restarPuntosMana(35);
-                        //muestra al jugador q el mago atacó
+                        int manaRestado = jugador.getCombatienteMago().getPuntosMana() - 35;
+                        jugador.getCombatienteMago().setPuntosMana(manaRestado);
                         System.out.println(jugador.getCombatienteMago().getNombre() + " Atacó a " + equipoOponente.getCombatienteMago().getNombre() +"!");
                         System.out.println(jugador.getCombatienteMago().getNombre() + " perdío maná!\n");
                         Combate.getInstancia(equipoOponente, equipoOponente, 67, null).setNumTurno(numTurno++);
                     } 
                     else if (oponenteElegido == 3){
                         int dano = equipoOponente.getCombatienteSanador().getPuntosVida() - (jugador.getCombatienteMago().getPuntosAtaque() - equipoOponente.getCombatienteSanador().getPuntosDefensa()); // se descuenta defensa
-                        //Resta vida del oponente
                         equipoOponente.getCombatienteSanador().setPuntosVida(dano); //le resta la vida teniendo en cuenta la defensa
-                        //restar maná del mago
-                        jugador.getCombatienteMago().restarPuntosMana(35);
-                        //muestra al jugador q el mago atacó
+                        int manaRestado = jugador.getCombatienteMago().getPuntosMana() - 35;
+                        jugador.getCombatienteMago().setPuntosMana(manaRestado);
                         System.out.println(jugador.getCombatienteMago().getNombre() + " Atacó a " + equipoOponente.getCombatienteSanador().getNombre() +"!");
                         System.out.println(jugador.getCombatienteMago().getNombre() + " perdío maná!\n");
                         Combate.getInstancia(equipoOponente, equipoOponente, 67, null).setNumTurno(numTurno++);
@@ -66,11 +65,28 @@ public class Mago extends Personaje {
                     }
                 }
             } 
-            // si jugador escoge defender
+            // -Escoge defender-
             else if (accionElegida == 2){
-               // jugador.getCombatienteGuerrero().setTemporalPuntosDefensa( 2);
+               // -Duracion de la accion defender: va a durar 2 turnos por defecto-
+                if (jugador.getCombatienteMago().getContTurnosDefensa() < 1){
+                    int defensaDuplicada = 2 * jugador.getCombatienteMago().getPuntosDefensa();
+                    jugador.getCombatienteMago().setPuntosDefensa(defensaDuplicada);
+                    jugador.getCombatienteMago().setContTurnosDefensa(2);
+                    System.out.println(jugador.getCombatienteMago().getNombre() + " ha duplicado su defensa!");
+                    Combate.getInstancia(equipoOponente, equipoOponente, 67, null).setNumTurno(numTurno++);
+                    
+                }
+                else{
+                    // -Defensa original: si los 2 turnos de defensa ya pasaron, vuelve a su valor original-
+                    jugador.getCombatienteMago().setContTurnosDefensa(jugador.getCombatienteGuerrero().getContTurnosDefensa()-1);
+                    if (jugador.getCombatienteMago().getContTurnosDefensa() <= 0){
+                        int defensaOriginal = jugador.getCombatienteMago().getPuntosDefensa() / 2;
+                        jugador.getCombatienteMago().setPuntosDefensa(defensaOriginal);
+                        Combate.getInstancia(equipoOponente, equipoOponente, 67, null).setNumTurno(numTurno++);
+                    }
+                }
             }
-            // si jugador escoge usar objeto
+            // -Escoge usar objeto-
             else if (accionElegida == 3){
                 jugador.getCombatienteGuerrero().getItem().usar(numTurno);
                 Combate.getInstancia(equipoOponente, equipoOponente, 67, null).setNumTurno(numTurno++);

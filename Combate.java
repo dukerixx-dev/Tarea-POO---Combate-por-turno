@@ -37,7 +37,7 @@ public class Combate {
         while (!finCombate(jugador)){  
             int personajeElegido = 0;   //Se creo empezar el ciclo while y recibir el personaje elegido.
             // -Mostrar y revisar estado equipos-
-            System.out.println("Turno: " + this.numTurno);
+            System.out.println("\nTurno: " + this.numTurno);
             equipo1.verEstadoEquipo();
             equipo2.verEstadoEquipo();
             // -Determinar que equipo y jugador le toca segun numTurno- 
@@ -50,7 +50,7 @@ public class Combate {
             }
             // -Escoger personaje-
             while (personajeElegido < 1 | personajeElegido > 3){
-                System.out.println(jugador.getNombre()+ " | ¿Qué personaje escoge?");
+                System.out.println("\n"+jugador.getNombre()+ " | ¿Qué personaje escoge?");
                 System.out.println(jugador.getCombatienteGuerrero().getNombre() +" (1), "+ 
                                     jugador.getCombatienteMago().getNombre() + " (2), "+ 
                                     jugador.getCombatienteSanador().getNombre() +" (3)?");

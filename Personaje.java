@@ -7,15 +7,18 @@ abstract class Personaje{
     private int puntosAtaque;
     private int puntosDefensa;
     private Item items;
+    private int contTurnosDefensa;
 
     // Constructor
-    public Personaje(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, int puntosDefensa, Item items){
+    public Personaje(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, 
+                        int puntosDefensa, Item items, int contTurnosDefensa){
         this.nombre = nombre;
         this.puntosVida = puntosVida;
         this.puntosMana = puntosMana;
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
         this.items = items;
+        this.contTurnosDefensa = contTurnosDefensa;
     }
 
     public abstract void ejecutarAccion(Equipo jugador, Equipo equipoOponente,int numTurno, Scanner lectorScanner);
@@ -58,6 +61,9 @@ abstract class Personaje{
     public Item getItem() {
         return items;
     }
+    public int getContTurnosDefensa(){
+        return contTurnosDefensa;
+    }
     //Setters
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -65,10 +71,21 @@ abstract class Personaje{
     public void setPuntosVida(int puntosVida) {
         this.puntosVida = puntosVida;
     }
-    public void añadirPuntosVida(int curacion) {
-        this.puntosVida += curacion;
+    public void setPuntosMana(int puntosMana) {
+        this.puntosMana = puntosMana;
     }
-    public void restarPuntosMana(int puntosRestados) {
-        this.puntosMana -= puntosRestados;
+    public void setPuntosDefensa(int puntosDefensa){
+        this.puntosDefensa = puntosDefensa;
     }
+
+    public void setPuntosAtaque(int puntosAtaque) {
+        this.puntosAtaque = puntosAtaque;
+    }
+    public void setItems(Item items) {
+        this.items = items;
+    }
+    public void setContTurnosDefensa(int contTurnosDefensa) {
+        this.contTurnosDefensa = contTurnosDefensa;
+    }
+    
 }

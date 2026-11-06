@@ -2,8 +2,8 @@ import java.util.Scanner;
 public class Guerrero extends Personaje{
     //constructor
     public Guerrero(String nombre, int puntosVida,  int puntosMana, int puntosAtaque, 
-                    int puntosDefensa, Item items){
-        super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, items);
+                    int puntosDefensa, Item items, int contTurnosDefensa){
+        super(nombre, puntosVida, puntosMana, puntosAtaque, puntosDefensa, items, contTurnosDefensa);
     }
     /**    
      * proposito de la funcion
@@ -18,29 +18,30 @@ public class Guerrero extends Personaje{
     public void ejecutarAccion(Equipo jugador, Equipo equipoOponente,int numTurno, Scanner lectorScanner){
         //Ataca a sus oponentes directamente, sin usar mana.
         int accionElegida = 0;
-        int contDefensa = 0;
+        // -Escoger accion-
         while (accionElegida < 1 | accionElegida >3){
             //revisa si el jugador ha selecionado "defender" en su anterior turno
-
             System.out.println("¿Qué accion desea ejecutar?");
             System.out.println("Atacar (1), Defender (2), Usar Objeto (3).");
             accionElegida = lectorScanner.nextInt();
-            // -si jugador escoge atacar-
+            // -Escoge atacar-
             if (accionElegida == 1){
                 int oponenteElegido = 0;
-                //preguntar al jugador que combatiente enemigo escoge para realizar daño
+                // -Escoger oponente-
                 while (oponenteElegido < 1 | oponenteElegido > 3){
                     System.out.println("¿A quién desea atacar del equipo " + equipoOponente.getNombre() +"?");
                     System.out.println(equipoOponente.getCombatienteGuerrero().getNombre() +" (1), "+ 
                                         equipoOponente.getCombatienteMago().getNombre() + " (2), "+ 
                                         equipoOponente.getCombatienteSanador().getNombre() +" (3)?");
                     oponenteElegido = lectorScanner.nextInt();
-                    //cambiar los stats del combatiente enemigo escogido segun los stats del guerrero
+                    // -cambia los puntos de vida del oponente, segun la defensa de este y los puntos de ataque del guerrero-
                     if (oponenteElegido == 1){
                         //explicacion variable dano: dano = vida del oponente elegido - (puntos de ataque del guerrero - defensa del oponente elegido)
                         int dano = equipoOponente.getCombatienteGuerrero().getPuntosVida() - (jugador.getCombatienteGuerrero().getPuntosAtaque() - equipoOponente.getCombatienteGuerrero().getPuntosDefensa()); // se descuenta defensa
-                        equipoOponente.getCombatienteGuerrero().setPuntosVida(dano); //le resta la vida teniendo en cuenta la defensa
+                        //Resta vida del oponente
+                        equipoOponente.getCombatienteGuerrero().setPuntosVida(dano); 
                         System.out.println(jugador.getCombatienteGuerrero().getNombre() + " Atacó a " + equipoOponente.getCombatienteGuerrero().getNombre() +"!\n");
+                        //como combate es un singleton, solo devuelve la instancia ya creada, asi q los parametros de getInstancia no afectan al objeto 
                         Combate.getInstancia(equipoOponente, equipoOponente, 67, null).setNumTurno(numTurno++);
                     }
                     else if (oponenteElegido == 2){
@@ -60,11 +61,27 @@ public class Guerrero extends Personaje{
                     }
                 }
             } 
-            // si jugador escoge defender
+            // -Escoge defender-
             else if (accionElegida == 2){
-               // jugador.getCombatienteGuerrero().setTemporalPuntosDefensa( 2);
+                // -Duracion de la accion defender: va a durar 2 turnos por defecto-
+                if (jugador.getCombatienteGuerrero().getContTurnosDefensa() < 1){
+                    int defensaDuplicada = 2 * jugador.getCombatienteGuerrero().getPuntosDefensa();
+                    jugador.getCombatienteGuerrero().setPuntosDefensa(defensaDuplicada);
+                    jugador.getCombatienteGuerrero().setContTurnosDefensa(2);
+                    System.out.println(jugador.getCombatienteGuerrero().getNombre() + " ha duplicado su defensa!");
+                    Combate.getInstancia(equipoOponente, equipoOponente, 67, null).setNumTurno(numTurno++);
+                }
+                else{
+                    // -defensa original: si los 2 turnos de defensa ya pasaron, vuelve a su valor original
+                    jugador.getCombatienteGuerrero().setContTurnosDefensa(jugador.getCombatienteGuerrero().getContTurnosDefensa()-1);
+                    if (jugador.getCombatienteGuerrero().getContTurnosDefensa() <= 0){
+                        int defensaOriginal = jugador.getCombatienteGuerrero().getPuntosDefensa() / 2;
+                        jugador.getCombatienteGuerrero().setPuntosDefensa(defensaOriginal);
+                        Combate.getInstancia(equipoOponente, equipoOponente, 67, null).setNumTurno(numTurno++);
+                    }
+                }
             }
-            // si jugador escoge usar objeto
+            // -Escoge usar objeto-
             else if (accionElegida == 3){
                 jugador.getCombatienteGuerrero().getItem().usar(numTurno);
                 Combate.getInstancia(equipoOponente, equipoOponente, 67, null).setNumTurno(numTurno++);
@@ -73,17 +90,5 @@ public class Guerrero extends Personaje{
                 System.out.println("Vuelva a elegir su acción porfavor");
             }
         }
-        //si el jugador escoge defender:
-        //se duplica los puntos de defensa.
-        
-        //si el jugador escoge usar objeto
-            //preguntar al jugador que objeto quiere escoger (nombre descripcion del objeto)
-            //if itemElegido == 1:
-                //iAtaque.usar(1)
-            //if itemElegido == 2:
-                //iDefensa.usar(2)
-            //if itemElegido():
-                //iCuracion.usar(3)
-
     }
 }
